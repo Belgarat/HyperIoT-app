@@ -91,7 +91,7 @@ export class AppComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe((projectsList: HProject[]) => {
         this.projectIds = projectsList.map((project) => project.id);
-        this.realtimeDataService.connect(this.projectIds);
+        this.realtimeDataService.connect(this.projectIds[0]);
       });
 
     this.alarmWrapper.eventNotificationState

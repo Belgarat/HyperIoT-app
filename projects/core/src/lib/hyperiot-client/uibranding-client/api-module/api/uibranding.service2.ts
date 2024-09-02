@@ -1,6 +1,6 @@
 /**
- * HyperIoT Authentication
- * HyperIoT Authentication API
+ * hyperiot UIBranding
+ * HyperIoT UIBranding API
  *
  * OpenAPI spec version: 2.0.0
  * Contact: users@acsoftware.it
@@ -14,19 +14,21 @@
 import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
          HttpResponse, HttpEvent }                           from '@angular/common/http';
+import { HttpContext }                                       from '@angular/common/http';
 import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
+import { Attachment } from '../../../models/attachment';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../../../models/configuration';
 
 
 @Injectable()
-export class AuthenticationService {
+export class UiBrandingService2 {
 
-    protected basePath = '/hyperiot/authentication';
+    protected basePath = '/hyperiot/ui-branding';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -61,10 +63,10 @@ export class AuthenticationService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public checkModuleWorking(observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public checkModuleWorking(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public checkModuleWorking(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public checkModuleWorking(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public checkModuleWorking(observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
+    public checkModuleWorking(observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
+    public checkModuleWorking(observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
+    public checkModuleWorking(observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -86,27 +88,29 @@ export class AuthenticationService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
+                context: context,
                 reportProgress: reportProgress
             }
         );
     }
 
     /**
-     * /authentication/login
-     * Login service for JWT Token
-     * @param username 
-     * @param password 
+     * /hyperiot/ui-branding
+     * Service for getting the current ui branding entity
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public login(username?: string, password?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public login(username?: string, password?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public login(username?: string, password?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public login(username?: string, password?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-
+    public getUIBranding(observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
+    public getUIBranding(observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
+    public getUIBranding(observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
+    public getUIBranding(observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
 
         let headers = this.defaultHeaders;
+
+        // authentication (jwt-auth) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["AUTHORIZATION"]) {
+            headers = headers.set('AUTHORIZATION', this.configuration.apiKeys["AUTHORIZATION"]);
+        }
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
@@ -119,50 +123,45 @@ export class AuthenticationService {
 
         // to determine the Content-Type header
         const consumes: string[] = [
-            'application/x-www-form-urlencoded'
+            'multipart/form-data'
         ];
 
-        const canConsumeForm = this.canConsumeForm(consumes);
-
-        let formParams: { append(param: string, value: any): void | HttpParams; };
-        let useForm = false;
-        let convertFormParamsToString = false;
-        if (useForm) {
-            formParams = new FormData();
-        } else {
-            formParams = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        }
-
-        if (username !== undefined) {
-            formParams = formParams.append('username', <any>username) || formParams;
-        }
-        if (password !== undefined) {
-            formParams = formParams.append('password', <any>password) || formParams;
-        }
-
-        return this.httpClient.post<any>(`${this.basePath}/login`,
-            convertFormParamsToString ? formParams.toString() : formParams,
+        return this.httpClient.get<any>(`${this.basePath}/`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
+                context: context,
                 reportProgress: reportProgress
             }
         );
     }
 
     /**
-     * /whoAmI
-     * Simple service for checking current logged user
+     * /hyperiot/uibrandings
+     * Service for updating a uibranding entity
+     * @param name name the user want to visualize
+     * @param colorScheme chosen color scheme
+     * @param logoFile logo image
+     * @param faviconFile favicon image
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public whoAmI(observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public whoAmI(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public whoAmI(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public whoAmI(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public updateUIBranding(name?: string, colorScheme?: string, logoFile?: Attachment, faviconFile?: Attachment, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
+    public updateUIBranding(name?: string, colorScheme?: string, logoFile?: Attachment, faviconFile?: Attachment, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
+    public updateUIBranding(name?: string, colorScheme?: string, logoFile?: Attachment, faviconFile?: Attachment, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
+    public updateUIBranding(name?: string, colorScheme?: string, logoFile?: Attachment, faviconFile?: Attachment, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+
+
+
+
 
         let headers = this.defaultHeaders;
+
+        // authentication (jwt-auth) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["AUTHORIZATION"]) {
+            headers = headers.set('AUTHORIZATION', this.configuration.apiKeys["AUTHORIZATION"]);
+        }
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
@@ -175,13 +174,20 @@ export class AuthenticationService {
 
         // to determine the Content-Type header
         const consumes: string[] = [
+            'application/json'
         ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected != undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
 
-        return this.httpClient.get<any>(`${this.basePath}/whoAmI`,
+        return this.httpClient.put<any>(`${this.basePath}/`,
+            faviconFile,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
+                context: context,
                 reportProgress: reportProgress
             }
         );

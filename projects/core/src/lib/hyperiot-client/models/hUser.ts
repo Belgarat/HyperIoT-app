@@ -9,7 +9,7 @@
 import { Role } from './role';
 
 
-export interface HUser { 
+export interface HUser {
     id?: number;
     entityVersion: number;
     readonly entityCreateDate?: Date;
@@ -17,8 +17,8 @@ export interface HUser {
     name?: string;
     lastname?: string;
     username?: string;
-    password?: string;
     admin?: boolean;
+    password?: string;
     passwordConfirm?: string;
     email?: string;
     roles?: Array<Role>;

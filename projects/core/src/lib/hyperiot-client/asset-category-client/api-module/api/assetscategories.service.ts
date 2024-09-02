@@ -14,7 +14,6 @@
 import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
          HttpResponse, HttpEvent }                           from '@angular/common/http';
-import { HttpContext }                                       from '@angular/common/http';
 import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
@@ -63,10 +62,10 @@ export class AssetscategoriesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public checkModuleWorking(observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public checkModuleWorking(observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public checkModuleWorking(observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public checkModuleWorking(observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public checkModuleWorking(observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public checkModuleWorking(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public checkModuleWorking(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public checkModuleWorking(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -88,7 +87,6 @@ export class AssetscategoriesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -101,10 +99,10 @@ export class AssetscategoriesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteAssetCategory(id: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public deleteAssetCategory(id: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public deleteAssetCategory(id: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public deleteAssetCategory(id: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public deleteAssetCategory(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteAssetCategory(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteAssetCategory(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteAssetCategory(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling deleteAssetCategory.');
@@ -136,7 +134,6 @@ export class AssetscategoriesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -148,10 +145,10 @@ export class AssetscategoriesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findAllAssetCategory(observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public findAllAssetCategory(observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public findAllAssetCategory(observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public findAllAssetCategory(observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public findAllAssetCategory(observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findAllAssetCategory(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findAllAssetCategory(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findAllAssetCategory(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -178,7 +175,6 @@ export class AssetscategoriesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -192,10 +188,10 @@ export class AssetscategoriesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findAllAssetCategoryPaginated(delta?: number, page?: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public findAllAssetCategoryPaginated(delta?: number, page?: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public findAllAssetCategoryPaginated(delta?: number, page?: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public findAllAssetCategoryPaginated(delta?: number, page?: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public findAllAssetCategoryPaginated(delta?: number, page?: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findAllAssetCategoryPaginated(delta?: number, page?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findAllAssetCategoryPaginated(delta?: number, page?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findAllAssetCategoryPaginated(delta?: number, page?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
 
@@ -233,7 +229,6 @@ export class AssetscategoriesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -246,10 +241,10 @@ export class AssetscategoriesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findAssetCategory(id: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public findAssetCategory(id: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public findAssetCategory(id: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public findAssetCategory(id: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public findAssetCategory(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findAssetCategory(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findAssetCategory(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findAssetCategory(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling findAssetCategory.');
@@ -280,7 +275,6 @@ export class AssetscategoriesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -293,10 +287,10 @@ export class AssetscategoriesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public saveAssetCategory(body: AssetCategory, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public saveAssetCategory(body: AssetCategory, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public saveAssetCategory(body: AssetCategory, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public saveAssetCategory(body: AssetCategory, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public saveAssetCategory(body: AssetCategory, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public saveAssetCategory(body: AssetCategory, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public saveAssetCategory(body: AssetCategory, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public saveAssetCategory(body: AssetCategory, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling saveAssetCategory.');
@@ -333,7 +327,6 @@ export class AssetscategoriesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -346,10 +339,10 @@ export class AssetscategoriesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateAssetCategory(body: AssetCategory, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public updateAssetCategory(body: AssetCategory, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public updateAssetCategory(body: AssetCategory, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public updateAssetCategory(body: AssetCategory, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public updateAssetCategory(body: AssetCategory, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateAssetCategory(body: AssetCategory, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateAssetCategory(body: AssetCategory, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateAssetCategory(body: AssetCategory, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling updateAssetCategory.');
@@ -386,7 +379,6 @@ export class AssetscategoriesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );

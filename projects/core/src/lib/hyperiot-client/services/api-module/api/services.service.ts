@@ -14,7 +14,6 @@
 import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
          HttpResponse, HttpEvent }                           from '@angular/common/http';
-import { HttpContext }                                       from '@angular/common/http';
 import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
@@ -62,10 +61,10 @@ export class ServicesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public checkModuleWorking(observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public checkModuleWorking(observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public checkModuleWorking(observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public checkModuleWorking(observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public checkModuleWorking(observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public checkModuleWorking(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public checkModuleWorking(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public checkModuleWorking(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -87,7 +86,6 @@ export class ServicesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -99,10 +97,10 @@ export class ServicesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getHyperIoTServicesVersions(observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public getHyperIoTServicesVersions(observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public getHyperIoTServicesVersions(observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public getHyperIoTServicesVersions(observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public getHyperIoTServicesVersions(observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public getHyperIoTServicesVersions(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public getHyperIoTServicesVersions(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public getHyperIoTServicesVersions(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -124,7 +122,6 @@ export class ServicesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );

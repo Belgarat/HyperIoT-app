@@ -98,7 +98,6 @@ export class HytTreeViewProjectComponent implements OnInit {
   }
 
   ngOnInit() {
-
     if (this.treeData) {
       this.setData(this.treeData);
     }

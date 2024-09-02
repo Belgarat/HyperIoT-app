@@ -14,7 +14,6 @@
 import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
          HttpResponse, HttpEvent }                           from '@angular/common/http';
-import { HttpContext }                                       from '@angular/common/http';
 import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
@@ -67,10 +66,10 @@ export class HusersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public activate(email: string, code: string, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public activate(email: string, code: string, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public activate(email: string, code: string, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public activate(email: string, code: string, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public activate(email: string, code: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public activate(email: string, code: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public activate(email: string, code: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public activate(email: string, code: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (email === null || email === undefined) {
             throw new Error('Required parameter email was null or undefined when calling activate.');
@@ -111,7 +110,6 @@ export class HusersService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -127,10 +125,10 @@ export class HusersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public changeHUserPassword(userId: number, oldPassword: string, newPassword: string, passwordConfirm: string, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public changeHUserPassword(userId: number, oldPassword: string, newPassword: string, passwordConfirm: string, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public changeHUserPassword(userId: number, oldPassword: string, newPassword: string, passwordConfirm: string, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public changeHUserPassword(userId: number, oldPassword: string, newPassword: string, passwordConfirm: string, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public changeHUserPassword(userId: number, oldPassword: string, newPassword: string, passwordConfirm: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public changeHUserPassword(userId: number, oldPassword: string, newPassword: string, passwordConfirm: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public changeHUserPassword(userId: number, oldPassword: string, newPassword: string, passwordConfirm: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public changeHUserPassword(userId: number, oldPassword: string, newPassword: string, passwordConfirm: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (userId === null || userId === undefined) {
             throw new Error('Required parameter userId was null or undefined when calling changeHUserPassword.');
@@ -199,7 +197,6 @@ export class HusersService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -211,10 +208,10 @@ export class HusersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public checkModuleWorking(observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public checkModuleWorking(observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public checkModuleWorking(observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public checkModuleWorking(observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public checkModuleWorking(observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public checkModuleWorking(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public checkModuleWorking(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public checkModuleWorking(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -236,7 +233,6 @@ export class HusersService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -250,10 +246,10 @@ export class HusersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteAccount(userId?: number, accountDeletionCode?: string, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public deleteAccount(userId?: number, accountDeletionCode?: string, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public deleteAccount(userId?: number, accountDeletionCode?: string, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public deleteAccount(userId?: number, accountDeletionCode?: string, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public deleteAccount(userId?: number, accountDeletionCode?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteAccount(userId?: number, accountDeletionCode?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteAccount(userId?: number, accountDeletionCode?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteAccount(userId?: number, accountDeletionCode?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
 
@@ -301,7 +297,6 @@ export class HusersService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -314,10 +309,10 @@ export class HusersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteHUser(id: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public deleteHUser(id: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public deleteHUser(id: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public deleteHUser(id: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public deleteHUser(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteHUser(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteHUser(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteHUser(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling deleteHUser.');
@@ -349,7 +344,6 @@ export class HusersService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -361,10 +355,10 @@ export class HusersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findAllHUser(observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public findAllHUser(observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public findAllHUser(observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public findAllHUser(observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public findAllHUser(observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findAllHUser(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findAllHUser(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findAllHUser(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -391,7 +385,6 @@ export class HusersService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -405,10 +398,10 @@ export class HusersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findAllHUserPaginated(delta?: number, page?: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public findAllHUserPaginated(delta?: number, page?: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public findAllHUserPaginated(delta?: number, page?: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public findAllHUserPaginated(delta?: number, page?: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public findAllHUserPaginated(delta?: number, page?: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findAllHUserPaginated(delta?: number, page?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findAllHUserPaginated(delta?: number, page?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findAllHUserPaginated(delta?: number, page?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
 
@@ -446,7 +439,6 @@ export class HusersService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -459,10 +451,10 @@ export class HusersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findHUser(id: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public findHUser(id: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public findHUser(id: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public findHUser(id: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public findHUser(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findHUser(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findHUser(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findHUser(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling findHUser.');
@@ -493,7 +485,6 @@ export class HusersService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -506,10 +497,10 @@ export class HusersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUserImage(id: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public getUserImage(id: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public getUserImage(id: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public getUserImage(id: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public getUserImage(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public getUserImage(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public getUserImage(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public getUserImage(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling getUserImage.');
@@ -540,7 +531,6 @@ export class HusersService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -553,10 +543,10 @@ export class HusersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public register(body: HUser, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public register(body: HUser, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public register(body: HUser, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public register(body: HUser, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public register(body: HUser, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public register(body: HUser, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public register(body: HUser, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public register(body: HUser, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling register.');
@@ -588,7 +578,6 @@ export class HusersService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -600,10 +589,10 @@ export class HusersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public requestAccountDeletion(observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public requestAccountDeletion(observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public requestAccountDeletion(observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public requestAccountDeletion(observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public requestAccountDeletion(observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public requestAccountDeletion(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public requestAccountDeletion(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public requestAccountDeletion(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -632,7 +621,6 @@ export class HusersService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -645,10 +633,10 @@ export class HusersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public resetPassword(body: HUserPasswordReset, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public resetPassword(body: HUserPasswordReset, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public resetPassword(body: HUserPasswordReset, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public resetPassword(body: HUserPasswordReset, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public resetPassword(body: HUserPasswordReset, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public resetPassword(body: HUserPasswordReset, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public resetPassword(body: HUserPasswordReset, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public resetPassword(body: HUserPasswordReset, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling resetPassword.');
@@ -680,7 +668,6 @@ export class HusersService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -693,10 +680,10 @@ export class HusersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public resetPasswordRequest(email: string, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public resetPasswordRequest(email: string, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public resetPasswordRequest(email: string, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public resetPasswordRequest(email: string, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public resetPasswordRequest(email: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public resetPasswordRequest(email: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public resetPasswordRequest(email: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public resetPasswordRequest(email: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (email === null || email === undefined) {
             throw new Error('Required parameter email was null or undefined when calling resetPasswordRequest.');
@@ -730,7 +717,6 @@ export class HusersService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -743,10 +729,10 @@ export class HusersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public saveHUser(body: HUser, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public saveHUser(body: HUser, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public saveHUser(body: HUser, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public saveHUser(body: HUser, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public saveHUser(body: HUser, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public saveHUser(body: HUser, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public saveHUser(body: HUser, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public saveHUser(body: HUser, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling saveHUser.');
@@ -783,7 +769,6 @@ export class HusersService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -797,10 +782,10 @@ export class HusersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public setUserImage(id: number, body?: Attachment, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public setUserImage(id: number, body?: Attachment, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public setUserImage(id: number, body?: Attachment, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public setUserImage(id: number, body?: Attachment, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public setUserImage(id: number, body?: Attachment, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public setUserImage(id: number, body?: Attachment, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public setUserImage(id: number, body?: Attachment, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public setUserImage(id: number, body?: Attachment, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling setUserImage.');
@@ -838,7 +823,6 @@ export class HusersService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -851,10 +835,10 @@ export class HusersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public unsetUserImage(id: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public unsetUserImage(id: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public unsetUserImage(id: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public unsetUserImage(id: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public unsetUserImage(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public unsetUserImage(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public unsetUserImage(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public unsetUserImage(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling unsetUserImage.');
@@ -885,7 +869,6 @@ export class HusersService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -898,10 +881,10 @@ export class HusersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateAccountInfo(body: HUser, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public updateAccountInfo(body: HUser, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public updateAccountInfo(body: HUser, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public updateAccountInfo(body: HUser, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public updateAccountInfo(body: HUser, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateAccountInfo(body: HUser, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateAccountInfo(body: HUser, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateAccountInfo(body: HUser, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling updateAccountInfo.');
@@ -938,7 +921,6 @@ export class HusersService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -951,10 +933,10 @@ export class HusersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateHUser(body: HUser, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public updateHUser(body: HUser, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public updateHUser(body: HUser, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public updateHUser(body: HUser, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public updateHUser(body: HUser, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateHUser(body: HUser, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateHUser(body: HUser, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateHUser(body: HUser, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling updateHUser.');
@@ -991,7 +973,6 @@ export class HusersService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );

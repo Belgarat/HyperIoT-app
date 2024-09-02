@@ -23,11 +23,7 @@ export class LoggerService {
         @Optional() @Inject('registry') registry: any
     ) {
         if (logLevel !== null) {
-          this.setLogLevel(logLevel);
-        }
-        if (registry) {
-          this.logRegistry = new LogRegistry();
-          this.setRegistry(registry);
+
         }
     }
 

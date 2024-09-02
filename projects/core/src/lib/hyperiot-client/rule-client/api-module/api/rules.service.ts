@@ -14,7 +14,6 @@
 import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
          HttpResponse, HttpEvent }                           from '@angular/common/http';
-import { HttpContext }                                       from '@angular/common/http';
 import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
@@ -63,10 +62,10 @@ export class RulesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public checkModuleWorking(observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public checkModuleWorking(observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public checkModuleWorking(observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public checkModuleWorking(observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public checkModuleWorking(observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public checkModuleWorking(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public checkModuleWorking(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public checkModuleWorking(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -88,7 +87,6 @@ export class RulesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -101,10 +99,10 @@ export class RulesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteRule(id: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public deleteRule(id: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public deleteRule(id: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public deleteRule(id: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public deleteRule(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteRule(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteRule(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteRule(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling deleteRule.');
@@ -136,7 +134,6 @@ export class RulesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -148,10 +145,10 @@ export class RulesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findAllAvailableOperations(observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public findAllAvailableOperations(observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public findAllAvailableOperations(observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public findAllAvailableOperations(observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public findAllAvailableOperations(observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findAllAvailableOperations(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findAllAvailableOperations(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findAllAvailableOperations(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -178,7 +175,6 @@ export class RulesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -190,10 +186,10 @@ export class RulesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findAllRule(observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public findAllRule(observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public findAllRule(observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public findAllRule(observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public findAllRule(observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findAllRule(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findAllRule(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findAllRule(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -220,7 +216,6 @@ export class RulesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -233,10 +228,10 @@ export class RulesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findAllRuleActions(type?: string, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public findAllRuleActions(type?: string, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public findAllRuleActions(type?: string, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public findAllRuleActions(type?: string, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public findAllRuleActions(type?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findAllRuleActions(type?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findAllRuleActions(type?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findAllRuleActions(type?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
@@ -270,7 +265,6 @@ export class RulesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -283,10 +277,10 @@ export class RulesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findAllRuleByPacketId(packetId: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public findAllRuleByPacketId(packetId: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public findAllRuleByPacketId(packetId: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public findAllRuleByPacketId(packetId: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public findAllRuleByPacketId(packetId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findAllRuleByPacketId(packetId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findAllRuleByPacketId(packetId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findAllRuleByPacketId(packetId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (packetId === null || packetId === undefined) {
             throw new Error('Required parameter packetId was null or undefined when calling findAllRuleByPacketId.');
@@ -317,7 +311,6 @@ export class RulesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -330,10 +323,10 @@ export class RulesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findAllRuleByProjectId(projectId: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public findAllRuleByProjectId(projectId: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public findAllRuleByProjectId(projectId: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public findAllRuleByProjectId(projectId: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public findAllRuleByProjectId(projectId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findAllRuleByProjectId(projectId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findAllRuleByProjectId(projectId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findAllRuleByProjectId(projectId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (projectId === null || projectId === undefined) {
             throw new Error('Required parameter projectId was null or undefined when calling findAllRuleByProjectId.');
@@ -364,7 +357,6 @@ export class RulesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -378,10 +370,10 @@ export class RulesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findAllRulePaginated(delta?: number, page?: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public findAllRulePaginated(delta?: number, page?: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public findAllRulePaginated(delta?: number, page?: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public findAllRulePaginated(delta?: number, page?: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public findAllRulePaginated(delta?: number, page?: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findAllRulePaginated(delta?: number, page?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findAllRulePaginated(delta?: number, page?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findAllRulePaginated(delta?: number, page?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
 
@@ -419,7 +411,6 @@ export class RulesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -432,10 +423,10 @@ export class RulesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findRule(id: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public findRule(id: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public findRule(id: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public findRule(id: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public findRule(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findRule(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findRule(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findRule(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling findRule.');
@@ -466,7 +457,6 @@ export class RulesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -479,10 +469,10 @@ export class RulesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public saveRule(body: Rule, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public saveRule(body: Rule, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public saveRule(body: Rule, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public saveRule(body: Rule, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public saveRule(body: Rule, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public saveRule(body: Rule, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public saveRule(body: Rule, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public saveRule(body: Rule, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling saveRule.');
@@ -519,7 +509,6 @@ export class RulesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -532,10 +521,10 @@ export class RulesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateRule(body: Rule, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public updateRule(body: Rule, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public updateRule(body: Rule, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public updateRule(body: Rule, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public updateRule(body: Rule, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateRule(body: Rule, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateRule(body: Rule, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateRule(body: Rule, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling updateRule.');
@@ -572,7 +561,6 @@ export class RulesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );

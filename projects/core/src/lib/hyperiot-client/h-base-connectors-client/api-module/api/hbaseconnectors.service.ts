@@ -14,7 +14,6 @@
 import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
          HttpResponse, HttpEvent }                           from '@angular/common/http';
-import { HttpContext }                                       from '@angular/common/http';
 import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
@@ -62,10 +61,10 @@ export class HbaseconnectorsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public checkConnection(observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public checkConnection(observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public checkConnection(observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public checkConnection(observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public checkConnection(observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public checkConnection(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public checkConnection(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public checkConnection(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -92,7 +91,6 @@ export class HbaseconnectorsService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -104,10 +102,10 @@ export class HbaseconnectorsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public checkModuleWorking(observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public checkModuleWorking(observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public checkModuleWorking(observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public checkModuleWorking(observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public checkModuleWorking(observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public checkModuleWorking(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public checkModuleWorking(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public checkModuleWorking(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -129,7 +127,6 @@ export class HbaseconnectorsService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -143,10 +140,10 @@ export class HbaseconnectorsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createTable(tableName?: string, columnFamilies?: string, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public createTable(tableName?: string, columnFamilies?: string, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public createTable(tableName?: string, columnFamilies?: string, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public createTable(tableName?: string, columnFamilies?: string, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public createTable(tableName?: string, columnFamilies?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public createTable(tableName?: string, columnFamilies?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public createTable(tableName?: string, columnFamilies?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public createTable(tableName?: string, columnFamilies?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
 
@@ -195,7 +192,6 @@ export class HbaseconnectorsService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -209,10 +205,10 @@ export class HbaseconnectorsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteData(tableName?: string, rowKey?: string, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public deleteData(tableName?: string, rowKey?: string, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public deleteData(tableName?: string, rowKey?: string, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public deleteData(tableName?: string, rowKey?: string, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public deleteData(tableName?: string, rowKey?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteData(tableName?: string, rowKey?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteData(tableName?: string, rowKey?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteData(tableName?: string, rowKey?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
 
@@ -260,7 +256,6 @@ export class HbaseconnectorsService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -273,10 +268,10 @@ export class HbaseconnectorsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public dropTable(tableName: string, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public dropTable(tableName: string, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public dropTable(tableName: string, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public dropTable(tableName: string, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public dropTable(tableName: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public dropTable(tableName: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public dropTable(tableName: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public dropTable(tableName: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (tableName === null || tableName === undefined) {
             throw new Error('Required parameter tableName was null or undefined when calling dropTable.');
@@ -308,7 +303,6 @@ export class HbaseconnectorsService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -322,10 +316,10 @@ export class HbaseconnectorsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public enableTable(tableName: string, tableName2: boolean, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public enableTable(tableName: string, tableName2: boolean, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public enableTable(tableName: string, tableName2: boolean, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public enableTable(tableName: string, tableName2: boolean, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public enableTable(tableName: string, tableName2: boolean, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public enableTable(tableName: string, tableName2: boolean, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public enableTable(tableName: string, tableName2: boolean, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public enableTable(tableName: string, tableName2: boolean, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (tableName === null || tableName === undefined) {
             throw new Error('Required parameter tableName was null or undefined when calling enableTable.');
@@ -362,7 +356,6 @@ export class HbaseconnectorsService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -379,10 +372,10 @@ export class HbaseconnectorsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public insertData(tableName?: string, rowKey?: string, columnFamily?: string, column?: string, cellValue?: string, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public insertData(tableName?: string, rowKey?: string, columnFamily?: string, column?: string, cellValue?: string, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public insertData(tableName?: string, rowKey?: string, columnFamily?: string, column?: string, cellValue?: string, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public insertData(tableName?: string, rowKey?: string, columnFamily?: string, column?: string, cellValue?: string, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public insertData(tableName?: string, rowKey?: string, columnFamily?: string, column?: string, cellValue?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public insertData(tableName?: string, rowKey?: string, columnFamily?: string, column?: string, cellValue?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public insertData(tableName?: string, rowKey?: string, columnFamily?: string, column?: string, cellValue?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public insertData(tableName?: string, rowKey?: string, columnFamily?: string, column?: string, cellValue?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
 
@@ -443,7 +436,6 @@ export class HbaseconnectorsService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );

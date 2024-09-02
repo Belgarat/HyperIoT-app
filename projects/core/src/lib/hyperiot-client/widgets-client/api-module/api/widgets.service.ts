@@ -14,7 +14,6 @@
 import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
          HttpResponse, HttpEvent }                           from '@angular/common/http';
-import { HttpContext }                                       from '@angular/common/http';
 import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
@@ -63,10 +62,10 @@ export class WidgetsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public checkModuleWorking(observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public checkModuleWorking(observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public checkModuleWorking(observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public checkModuleWorking(observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public checkModuleWorking(observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public checkModuleWorking(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public checkModuleWorking(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public checkModuleWorking(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -88,7 +87,6 @@ export class WidgetsService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -101,10 +99,10 @@ export class WidgetsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteWidget(id: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public deleteWidget(id: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public deleteWidget(id: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public deleteWidget(id: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public deleteWidget(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteWidget(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteWidget(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteWidget(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling deleteWidget.');
@@ -136,7 +134,6 @@ export class WidgetsService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -148,10 +145,10 @@ export class WidgetsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findAllWidget(observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public findAllWidget(observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public findAllWidget(observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public findAllWidget(observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public findAllWidget(observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findAllWidget(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findAllWidget(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findAllWidget(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -178,7 +175,6 @@ export class WidgetsService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -191,10 +187,10 @@ export class WidgetsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findAllWidgetInCategories(type: string, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public findAllWidgetInCategories(type: string, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public findAllWidgetInCategories(type: string, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public findAllWidgetInCategories(type: string, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public findAllWidgetInCategories(type: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findAllWidgetInCategories(type: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findAllWidgetInCategories(type: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findAllWidgetInCategories(type: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (type === null || type === undefined) {
             throw new Error('Required parameter type was null or undefined when calling findAllWidgetInCategories.');
@@ -225,7 +221,6 @@ export class WidgetsService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -239,10 +234,10 @@ export class WidgetsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findAllWidgetPaginated(delta?: number, page?: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public findAllWidgetPaginated(delta?: number, page?: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public findAllWidgetPaginated(delta?: number, page?: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public findAllWidgetPaginated(delta?: number, page?: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public findAllWidgetPaginated(delta?: number, page?: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findAllWidgetPaginated(delta?: number, page?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findAllWidgetPaginated(delta?: number, page?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findAllWidgetPaginated(delta?: number, page?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
 
@@ -280,7 +275,6 @@ export class WidgetsService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -293,10 +287,10 @@ export class WidgetsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findWidget(id: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public findWidget(id: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public findWidget(id: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public findWidget(id: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public findWidget(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findWidget(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findWidget(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findWidget(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling findWidget.');
@@ -327,7 +321,6 @@ export class WidgetsService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -341,10 +334,10 @@ export class WidgetsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public rateWidget(rate: number, body: Widget, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public rateWidget(rate: number, body: Widget, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public rateWidget(rate: number, body: Widget, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public rateWidget(rate: number, body: Widget, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public rateWidget(rate: number, body: Widget, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public rateWidget(rate: number, body: Widget, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public rateWidget(rate: number, body: Widget, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public rateWidget(rate: number, body: Widget, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (rate === null || rate === undefined) {
             throw new Error('Required parameter rate was null or undefined when calling rateWidget.');
@@ -385,7 +378,6 @@ export class WidgetsService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -398,10 +390,10 @@ export class WidgetsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public saveWidget(body: Widget, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public saveWidget(body: Widget, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public saveWidget(body: Widget, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public saveWidget(body: Widget, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public saveWidget(body: Widget, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public saveWidget(body: Widget, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public saveWidget(body: Widget, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public saveWidget(body: Widget, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling saveWidget.');
@@ -438,7 +430,6 @@ export class WidgetsService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -451,10 +442,10 @@ export class WidgetsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateWidget(body: Widget, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public updateWidget(body: Widget, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public updateWidget(body: Widget, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public updateWidget(body: Widget, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public updateWidget(body: Widget, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateWidget(body: Widget, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateWidget(body: Widget, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateWidget(body: Widget, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling updateWidget.');
@@ -491,7 +482,6 @@ export class WidgetsService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );

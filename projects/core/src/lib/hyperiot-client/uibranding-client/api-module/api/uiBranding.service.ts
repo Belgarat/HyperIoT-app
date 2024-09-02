@@ -14,21 +14,20 @@
 import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
          HttpResponse, HttpEvent }                           from '@angular/common/http';
-import { HttpContext }                                       from '@angular/common/http';
 import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { Attachment } from '../../../models/attachment';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
-import { Configuration }                                     from '../../../models/configuration';
+import {Configuration} from "../../../models/configuration";
+
 
 
 @Injectable()
 export class UiBrandingService {
 
-    protected basePath = '/hyperiot/ui-branding';
+    protected basePath = 'https://localhost/hyperiot/ui-branding';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -63,10 +62,10 @@ export class UiBrandingService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public checkModuleWorking(observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public checkModuleWorking(observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public checkModuleWorking(observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public checkModuleWorking(observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public checkModuleWorking(observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public checkModuleWorking(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public checkModuleWorking(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public checkModuleWorking(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -88,7 +87,6 @@ export class UiBrandingService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -100,10 +98,10 @@ export class UiBrandingService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUIBranding(observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public getUIBranding(observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public getUIBranding(observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public getUIBranding(observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public getUIBranding(observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public getUIBranding(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public getUIBranding(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public getUIBranding(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -131,30 +129,21 @@ export class UiBrandingService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
     }
 
     /**
-     * /hyperiot/uibrandings
-     * Service for updating a uibranding entity
-     * @param name name the user want to visualize
-     * @param colorScheme chosen color scheme
-     * @param logoFile logo image 
-     * @param faviconFile favicon image
+     * /hyperiot/ui-branding
+     * Service for resetting a uibranding entity
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateUIBranding(name?: string, colorScheme?: string, logoFile?: Attachment, faviconFile?: Attachment, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public updateUIBranding(name?: string, colorScheme?: string, logoFile?: Attachment, faviconFile?: Attachment, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public updateUIBranding(name?: string, colorScheme?: string, logoFile?: Attachment, faviconFile?: Attachment, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public updateUIBranding(name?: string, colorScheme?: string, logoFile?: Attachment, faviconFile?: Attachment, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
-
-
-
-
+    public updateUIBranding1(observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateUIBranding1(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateUIBranding1(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateUIBranding1(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -176,18 +165,13 @@ export class UiBrandingService {
         const consumes: string[] = [
             'application/json'
         ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-        if (httpContentTypeSelected != undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
-        }
 
         return this.httpClient.put<any>(`${this.basePath}/`,
-            faviconFile,
+            null,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );

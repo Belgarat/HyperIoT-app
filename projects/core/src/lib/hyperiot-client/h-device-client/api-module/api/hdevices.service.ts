@@ -14,7 +14,6 @@
 import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
          HttpResponse, HttpEvent }                           from '@angular/common/http';
-import { HttpContext }                                       from '@angular/common/http';
 import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
@@ -63,10 +62,10 @@ export class HdevicesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public checkModuleWorking(observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public checkModuleWorking(observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public checkModuleWorking(observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public checkModuleWorking(observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public checkModuleWorking(observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public checkModuleWorking(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public checkModuleWorking(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public checkModuleWorking(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -88,7 +87,6 @@ export class HdevicesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -101,10 +99,10 @@ export class HdevicesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteHDevice(id: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public deleteHDevice(id: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public deleteHDevice(id: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public deleteHDevice(id: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public deleteHDevice(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteHDevice(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteHDevice(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteHDevice(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling deleteHDevice.');
@@ -136,7 +134,6 @@ export class HdevicesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -148,10 +145,10 @@ export class HdevicesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findAllHDevice(observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public findAllHDevice(observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public findAllHDevice(observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public findAllHDevice(observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public findAllHDevice(observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findAllHDevice(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findAllHDevice(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findAllHDevice(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -178,7 +175,6 @@ export class HdevicesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -191,10 +187,10 @@ export class HdevicesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findAllHDeviceByProjectId(projectId: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public findAllHDeviceByProjectId(projectId: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public findAllHDeviceByProjectId(projectId: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public findAllHDeviceByProjectId(projectId: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public findAllHDeviceByProjectId(projectId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findAllHDeviceByProjectId(projectId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findAllHDeviceByProjectId(projectId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findAllHDeviceByProjectId(projectId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (projectId === null || projectId === undefined) {
             throw new Error('Required parameter projectId was null or undefined when calling findAllHDeviceByProjectId.');
@@ -225,7 +221,6 @@ export class HdevicesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -238,10 +233,10 @@ export class HdevicesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findAllHDeviceByProjectIdExtended(projectId: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public findAllHDeviceByProjectIdExtended(projectId: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public findAllHDeviceByProjectIdExtended(projectId: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public findAllHDeviceByProjectIdExtended(projectId: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public findAllHDeviceByProjectIdExtended(projectId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findAllHDeviceByProjectIdExtended(projectId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findAllHDeviceByProjectIdExtended(projectId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findAllHDeviceByProjectIdExtended(projectId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (projectId === null || projectId === undefined) {
             throw new Error('Required parameter projectId was null or undefined when calling findAllHDeviceByProjectIdExtended.');
@@ -272,7 +267,6 @@ export class HdevicesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -286,10 +280,10 @@ export class HdevicesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findAllHDevicePaginated(delta?: number, page?: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public findAllHDevicePaginated(delta?: number, page?: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public findAllHDevicePaginated(delta?: number, page?: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public findAllHDevicePaginated(delta?: number, page?: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public findAllHDevicePaginated(delta?: number, page?: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findAllHDevicePaginated(delta?: number, page?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findAllHDevicePaginated(delta?: number, page?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findAllHDevicePaginated(delta?: number, page?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
 
@@ -327,7 +321,6 @@ export class HdevicesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -340,10 +333,10 @@ export class HdevicesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findHDevice(id: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public findHDevice(id: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public findHDevice(id: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public findHDevice(id: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public findHDevice(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findHDevice(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findHDevice(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findHDevice(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling findHDevice.');
@@ -374,7 +367,6 @@ export class HdevicesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -387,10 +379,10 @@ export class HdevicesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findHDeviceExtended(id: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public findHDeviceExtended(id: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public findHDeviceExtended(id: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public findHDeviceExtended(id: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public findHDeviceExtended(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findHDeviceExtended(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findHDeviceExtended(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findHDeviceExtended(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling findHDeviceExtended.');
@@ -421,7 +413,6 @@ export class HdevicesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -437,10 +428,10 @@ export class HdevicesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public resetPassword(hdeviceId?: number, passwordResetCode?: string, newPassword?: string, passwordConfirm?: string, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public resetPassword(hdeviceId?: number, passwordResetCode?: string, newPassword?: string, passwordConfirm?: string, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public resetPassword(hdeviceId?: number, passwordResetCode?: string, newPassword?: string, passwordConfirm?: string, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public resetPassword(hdeviceId?: number, passwordResetCode?: string, newPassword?: string, passwordConfirm?: string, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public resetPassword(hdeviceId?: number, passwordResetCode?: string, newPassword?: string, passwordConfirm?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public resetPassword(hdeviceId?: number, passwordResetCode?: string, newPassword?: string, passwordConfirm?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public resetPassword(hdeviceId?: number, passwordResetCode?: string, newPassword?: string, passwordConfirm?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public resetPassword(hdeviceId?: number, passwordResetCode?: string, newPassword?: string, passwordConfirm?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
 
@@ -492,7 +483,6 @@ export class HdevicesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -505,10 +495,10 @@ export class HdevicesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public resetPasswordRequest(hdeviceId: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public resetPasswordRequest(hdeviceId: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public resetPasswordRequest(hdeviceId: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public resetPasswordRequest(hdeviceId: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public resetPasswordRequest(hdeviceId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public resetPasswordRequest(hdeviceId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public resetPasswordRequest(hdeviceId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public resetPasswordRequest(hdeviceId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (hdeviceId === null || hdeviceId === undefined) {
             throw new Error('Required parameter hdeviceId was null or undefined when calling resetPasswordRequest.');
@@ -536,7 +526,6 @@ export class HdevicesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -549,10 +538,10 @@ export class HdevicesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public saveHDevice(body: HDevice, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public saveHDevice(body: HDevice, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public saveHDevice(body: HDevice, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public saveHDevice(body: HDevice, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public saveHDevice(body: HDevice, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public saveHDevice(body: HDevice, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public saveHDevice(body: HDevice, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public saveHDevice(body: HDevice, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling saveHDevice.');
@@ -589,7 +578,6 @@ export class HdevicesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -602,10 +590,10 @@ export class HdevicesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateHDevice(body: HDevice, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public updateHDevice(body: HDevice, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public updateHDevice(body: HDevice, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public updateHDevice(body: HDevice, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public updateHDevice(body: HDevice, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateHDevice(body: HDevice, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateHDevice(body: HDevice, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateHDevice(body: HDevice, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling updateHDevice.');
@@ -642,7 +630,6 @@ export class HdevicesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -658,10 +645,10 @@ export class HdevicesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateHDevicePassword(deviceId: number, oldPassword: string, newPassword: string, passwordConfirm: string, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public updateHDevicePassword(deviceId: number, oldPassword: string, newPassword: string, passwordConfirm: string, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public updateHDevicePassword(deviceId: number, oldPassword: string, newPassword: string, passwordConfirm: string, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public updateHDevicePassword(deviceId: number, oldPassword: string, newPassword: string, passwordConfirm: string, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public updateHDevicePassword(deviceId: number, oldPassword: string, newPassword: string, passwordConfirm: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateHDevicePassword(deviceId: number, oldPassword: string, newPassword: string, passwordConfirm: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateHDevicePassword(deviceId: number, oldPassword: string, newPassword: string, passwordConfirm: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateHDevicePassword(deviceId: number, oldPassword: string, newPassword: string, passwordConfirm: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (deviceId === null || deviceId === undefined) {
             throw new Error('Required parameter deviceId was null or undefined when calling updateHDevicePassword.');
@@ -730,7 +717,6 @@ export class HdevicesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );

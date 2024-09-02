@@ -7,15 +7,6 @@ import { IDataService } from '../data.interface';
 import { RealtimeDataChannelController } from './realtimeDataChannelController';
 import { PacketData, PacketDataChunk } from '../models/packet-data';
 import { HPacket } from '../../hyperiot-client/models/hPacket';
-import { HPacketField } from '../../hyperiot-client/models/hPacketField';
-import { DateFormatterService } from '../../hyperiot-service/date-formatter/date-formatter.service';
-
-// HPacketData created on top op HPacket
-// Unable to use HPacket directly because the 'fields' field is an array, but when decoded from Avro, 'fields' will be an object.
-// TODO Hpacket should be used
-interface HPacketData extends Omit<HPacket, 'fields'> {
-  fields: { [key: string]: HPacketField; }
-}
 
 @Injectable({
   providedIn: 'root'
@@ -42,7 +33,7 @@ export class RealtimeDataService extends BaseDataService implements IDataService
 
   private baseWs = (location.protocol == 'https:') ? 'wss:' : 'ws:';
   private timer;
-  private wsUrl = this.baseWs + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/hyperiot/ws/project?';
+  private wsUrl = this.baseWs + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/hyperiot/ws/project?projectId=';
   private ws: WebSocket;
 
   pingMessage = {
@@ -52,7 +43,7 @@ export class RealtimeDataService extends BaseDataService implements IDataService
   };
   packetSchema: any;
 
-  constructor(private dateFormatterService: DateFormatterService) {
+  constructor() {
     super();
     this.eventStream = new Subject<any>();
   }
@@ -62,11 +53,10 @@ export class RealtimeDataService extends BaseDataService implements IDataService
    *
    * @param url WebSocket endpoint url
    */
-  connect(projectIds: number[], url?: string) {
+  connect(projectId: number, url?: string) {
     console.log('Connecting websocket...');
     this.disconnect();
-    const projectIdsQueryString = projectIds.map(id => `projectId=${id}`).join('&');
-    this.ws = new WebSocket(url ? url : `${this.wsUrl}${projectIdsQueryString}`);
+    this.ws = new WebSocket(url != null ? url : this.wsUrl + projectId);
     this.ws.onmessage = this.onWsMessage.bind(this);
     this.ws.onerror = this.onWsError.bind(this);
     this.ws.onclose = this.onWsClose.bind(this);
@@ -135,24 +125,24 @@ export class RealtimeDataService extends BaseDataService implements IDataService
     // avsc.js must be manually included in the hosting page
     const avro = window['avsc'];
     if (!avro) {
-      const errorMessage = '@hyperiot/core/data-stream-service - ERROR: https://github.com/mtth/avsc must be included in the hosting page.';
+      const errorMessage = '@hyperiot/core/data-stream-service - ERROR: https://github.com/aszmyd/avsc-js (dist) must be included in the hosting page.';
       console.error(errorMessage);
       throw Error(errorMessage);
     }
     // read AVRO-serialized HPacket from Kafka-Flux
-    const wsData = JSON.parse(event.data);  
+    const wsData = JSON.parse(event.data);
     // decode base-64 payload
     const decodedWsPayload = atob(wsData.payload);
     // TODO: add specific type 'SCHEMA' instead of using 'INFO'
     if (wsData.type === 'INFO') {
-      this.packetSchema = avro.Type.forSchema(JSON.parse(decodedWsPayload));
+      this.packetSchema = avro.parse(JSON.parse(decodedWsPayload));
       return;
     } else if (!this.packetSchema) {
       // cannot continue without schema definition
       return;
     }
     // decode AVRO data to HPacket instance
-    const hpacket = this.packetSchema.fromBuffer(new Buffer(decodedWsPayload, 'binary')) as HPacketData;
+    const hpacket = this.packetSchema.decode(new Buffer(decodedWsPayload, 'binary')) as HPacket;
     // route received HPacket to eventStream subscribers
     this.eventStream.next({ data: hpacket });
     if (wsData.type === 'APPLICATION') {
@@ -184,13 +174,6 @@ export class RealtimeDataService extends BaseDataService implements IDataService
                   }
                 });
               }
-              if(channelData.controller.timestampToFormat){
-                for (const key of channelData.controller.timestampToFormat.keys()) {
-                  if(fields[key]){
-                    fields[key] = this.dateFormatterService.formatTimestamp(fields[key]);
-                  }
-                }
-              }
               const packetDataChunk: PacketDataChunk = {
                 packetId: packetFilter.packetId,
                 data: [fields]
@@ -207,35 +190,31 @@ export class RealtimeDataService extends BaseDataService implements IDataService
     }
   }
 
-  private getField(packetFilter: DataPacketFilter, hpacket: HPacketData, fieldId: any): Object {
+  private getField(packetFilter: DataPacketFilter, hpacket: HPacket, fieldId: any): Object {
     let field = {};
     const fieldName = packetFilter.fields[fieldId];
-    if (hpacket.fields.hasOwnProperty(fieldName)) {
-      const hPacketField = hpacket.fields[fieldName];
+    if (hpacket.fields.map.hasOwnProperty(fieldName)) {
+      const tmpValue = hpacket.fields.map[fieldName].value;
       // based on the type, the input packet field value
       // will be stored in the corresponding type property
       // eg. if packet field is "DOUBLE" then the effective value
       // will be stored into 'value.double' property
-      if (!hPacketField.value) {
+      if (!tmpValue) {
         field[fieldName] = null;
       } else {
-        const valueKey = Object.keys(hPacketField.value)[0];
-        let value = hPacketField.value[valueKey];
-        if (hPacketField.multiplicity === 'ARRAY') {
-          value = value.map(element => Object.values(element)[0]);
-        }
-        // TODO add matrix support
+        const valueKey = Object.keys(tmpValue)[0];
+        const value = hpacket.fields.map[fieldName].value[valueKey];
         field[fieldName] = value;
       }
     }
     return field;
   }
 
-  private getTimestamp(hpacket: HPacketData): Date {
+  private getTimestamp(hpacket: HPacket): Date {
     // get timestamp from packet if present
     let timestampFieldName = hpacket.timestampField;
-    if (hpacket.fields[timestampFieldName])
-      return new Date(hpacket.fields[timestampFieldName].value.long);
+    if (hpacket.fields.map[timestampFieldName])
+      return new Date(hpacket.fields.map[timestampFieldName].value.long);
     return new Date();
   }
 

@@ -14,7 +14,6 @@
 import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
          HttpResponse, HttpEvent }                           from '@angular/common/http';
-import { HttpContext }                                       from '@angular/common/http';
 import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
@@ -63,10 +62,10 @@ export class RolesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public checkModuleWorking(observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public checkModuleWorking(observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public checkModuleWorking(observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public checkModuleWorking(observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public checkModuleWorking(observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public checkModuleWorking(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public checkModuleWorking(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public checkModuleWorking(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -93,7 +92,6 @@ export class RolesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -106,10 +104,10 @@ export class RolesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteRole(id: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public deleteRole(id: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public deleteRole(id: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public deleteRole(id: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public deleteRole(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteRole(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteRole(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteRole(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling deleteRole.');
@@ -141,7 +139,6 @@ export class RolesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -155,10 +152,10 @@ export class RolesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteUserRole(roleId: number, userId: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public deleteUserRole(roleId: number, userId: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public deleteUserRole(roleId: number, userId: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public deleteUserRole(roleId: number, userId: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public deleteUserRole(roleId: number, userId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteUserRole(roleId: number, userId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteUserRole(roleId: number, userId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteUserRole(roleId: number, userId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (roleId === null || roleId === undefined) {
             throw new Error('Required parameter roleId was null or undefined when calling deleteUserRole.');
@@ -194,7 +191,6 @@ export class RolesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -206,10 +202,10 @@ export class RolesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findAllRoles(observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public findAllRoles(observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public findAllRoles(observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public findAllRoles(observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public findAllRoles(observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findAllRoles(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findAllRoles(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findAllRoles(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -236,7 +232,6 @@ export class RolesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -250,10 +245,10 @@ export class RolesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findAllRolesPaginated(delta?: number, page?: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public findAllRolesPaginated(delta?: number, page?: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public findAllRolesPaginated(delta?: number, page?: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public findAllRolesPaginated(delta?: number, page?: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public findAllRolesPaginated(delta?: number, page?: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findAllRolesPaginated(delta?: number, page?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findAllRolesPaginated(delta?: number, page?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findAllRolesPaginated(delta?: number, page?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
 
@@ -291,7 +286,6 @@ export class RolesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -304,10 +298,10 @@ export class RolesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findAllUserRoles(userId: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public findAllUserRoles(userId: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public findAllUserRoles(userId: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public findAllUserRoles(userId: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public findAllUserRoles(userId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findAllUserRoles(userId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findAllUserRoles(userId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findAllUserRoles(userId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (userId === null || userId === undefined) {
             throw new Error('Required parameter userId was null or undefined when calling findAllUserRoles.');
@@ -338,7 +332,6 @@ export class RolesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -351,10 +344,10 @@ export class RolesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findRole(id: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public findRole(id: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public findRole(id: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public findRole(id: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public findRole(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findRole(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findRole(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findRole(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling findRole.');
@@ -385,7 +378,6 @@ export class RolesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -398,10 +390,10 @@ export class RolesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public saveRole(body: Role, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public saveRole(body: Role, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public saveRole(body: Role, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public saveRole(body: Role, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public saveRole(body: Role, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public saveRole(body: Role, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public saveRole(body: Role, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public saveRole(body: Role, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling saveRole.');
@@ -438,7 +430,6 @@ export class RolesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -452,10 +443,10 @@ export class RolesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public saveUserRole(roleId: number, userId: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public saveUserRole(roleId: number, userId: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public saveUserRole(roleId: number, userId: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public saveUserRole(roleId: number, userId: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public saveUserRole(roleId: number, userId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public saveUserRole(roleId: number, userId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public saveUserRole(roleId: number, userId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public saveUserRole(roleId: number, userId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (roleId === null || roleId === undefined) {
             throw new Error('Required parameter roleId was null or undefined when calling saveUserRole.');
@@ -492,7 +483,6 @@ export class RolesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -505,10 +495,10 @@ export class RolesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateRole(body: Role, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public updateRole(body: Role, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public updateRole(body: Role, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public updateRole(body: Role, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public updateRole(body: Role, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateRole(body: Role, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateRole(body: Role, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateRole(body: Role, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling updateRole.');
@@ -545,7 +535,6 @@ export class RolesService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );

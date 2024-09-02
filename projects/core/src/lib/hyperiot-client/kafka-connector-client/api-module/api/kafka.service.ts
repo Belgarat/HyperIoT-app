@@ -14,7 +14,6 @@
 import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
          HttpResponse, HttpEvent }                           from '@angular/common/http';
-import { HttpContext }                                       from '@angular/common/http';
 import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
@@ -66,10 +65,10 @@ export class KafkaService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public _delete(instanceName: string, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public _delete(instanceName: string, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public _delete(instanceName: string, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public _delete(instanceName: string, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public _delete(instanceName: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public _delete(instanceName: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public _delete(instanceName: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public _delete(instanceName: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (instanceName === null || instanceName === undefined) {
             throw new Error('Required parameter instanceName was null or undefined when calling _delete.');
@@ -100,7 +99,6 @@ export class KafkaService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -113,10 +111,10 @@ export class KafkaService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public add(body: ConnectorConfig, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public add(body: ConnectorConfig, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public add(body: ConnectorConfig, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public add(body: ConnectorConfig, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public add(body: ConnectorConfig, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public add(body: ConnectorConfig, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public add(body: ConnectorConfig, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public add(body: ConnectorConfig, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling add.');
@@ -153,7 +151,6 @@ export class KafkaService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -166,10 +163,10 @@ export class KafkaService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public addACLs(body: ACLConfig, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public addACLs(body: ACLConfig, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public addACLs(body: ACLConfig, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public addACLs(body: ACLConfig, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public addACLs(body: ACLConfig, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public addACLs(body: ACLConfig, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public addACLs(body: ACLConfig, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public addACLs(body: ACLConfig, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling addACLs.');
@@ -205,7 +202,6 @@ export class KafkaService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -218,10 +214,10 @@ export class KafkaService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public adminDeleteACLs(body: ACLConfig, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public adminDeleteACLs(body: ACLConfig, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public adminDeleteACLs(body: ACLConfig, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public adminDeleteACLs(body: ACLConfig, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public adminDeleteACLs(body: ACLConfig, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public adminDeleteACLs(body: ACLConfig, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public adminDeleteACLs(body: ACLConfig, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public adminDeleteACLs(body: ACLConfig, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling adminDeleteACLs.');
@@ -256,7 +252,6 @@ export class KafkaService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -268,10 +263,10 @@ export class KafkaService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public checkModuleWorking(observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public checkModuleWorking(observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public checkModuleWorking(observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public checkModuleWorking(observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public checkModuleWorking(observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public checkModuleWorking(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public checkModuleWorking(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public checkModuleWorking(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -293,7 +288,6 @@ export class KafkaService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -306,10 +300,10 @@ export class KafkaService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createMultipleTopic(body: Array<TopicConfig>, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public createMultipleTopic(body: Array<TopicConfig>, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public createMultipleTopic(body: Array<TopicConfig>, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public createMultipleTopic(body: Array<TopicConfig>, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public createMultipleTopic(body: Array<TopicConfig>, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public createMultipleTopic(body: Array<TopicConfig>, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public createMultipleTopic(body: Array<TopicConfig>, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public createMultipleTopic(body: Array<TopicConfig>, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling createMultipleTopic.');
@@ -345,7 +339,6 @@ export class KafkaService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -358,10 +351,10 @@ export class KafkaService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createTopic(body: TopicConfig, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public createTopic(body: TopicConfig, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public createTopic(body: TopicConfig, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public createTopic(body: TopicConfig, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public createTopic(body: TopicConfig, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public createTopic(body: TopicConfig, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public createTopic(body: TopicConfig, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public createTopic(body: TopicConfig, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling createTopic.');
@@ -397,7 +390,6 @@ export class KafkaService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -410,10 +402,10 @@ export class KafkaService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public dropTopics(body: Array<string>, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public dropTopics(body: Array<string>, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public dropTopics(body: Array<string>, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public dropTopics(body: Array<string>, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public dropTopics(body: Array<string>, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public dropTopics(body: Array<string>, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public dropTopics(body: Array<string>, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public dropTopics(body: Array<string>, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling dropTopics.');
@@ -448,7 +440,6 @@ export class KafkaService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -462,10 +453,10 @@ export class KafkaService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public update(instanceName: string, body: ConnectorConfig, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public update(instanceName: string, body: ConnectorConfig, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public update(instanceName: string, body: ConnectorConfig, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public update(instanceName: string, body: ConnectorConfig, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public update(instanceName: string, body: ConnectorConfig, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public update(instanceName: string, body: ConnectorConfig, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public update(instanceName: string, body: ConnectorConfig, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public update(instanceName: string, body: ConnectorConfig, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (instanceName === null || instanceName === undefined) {
             throw new Error('Required parameter instanceName was null or undefined when calling update.');
@@ -506,7 +497,6 @@ export class KafkaService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );

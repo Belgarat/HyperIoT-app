@@ -155,7 +155,7 @@ export class DashboardConfigService {
         // Save the dashboard structure
         // console.log('Saving Dashboard', dashboardId, dashboardWidgets);
         return this.dashboardWidgetService
-            .saveAllDashboardWidget(+dashboardId, dashboardWidgets, 'body', false, new HttpContext().set(IGNORE_ERROR_NOTIFY, true));
+            .saveAllDashboardWidget(+dashboardId, dashboardWidgets, 'body', false);
     }
 
     getWidgetCategoryList() {

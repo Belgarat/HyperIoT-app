@@ -11,7 +11,7 @@ import { HProject } from './hProject';
 import { HyperIoTRole } from './hyperIoTRole';
 
 
-export interface HDevice { 
+export interface HDevice {
     id?: number;
     entityVersion: number;
     readonly entityCreateDate?: Date;

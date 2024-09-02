@@ -152,7 +152,7 @@ export class ApplicationFormComponent extends ProjectFormEntity implements After
     this.loadingStatus = LoadingStatusEnum.Saving;
     this.resetErrors();
 
-    const d = this.entity;
+    const d: HDevice = this.entity;
     d.deviceName = this.form.get('hdevice-devicename').value;
     d.description = this.form.get('hdevice-description').value;
 

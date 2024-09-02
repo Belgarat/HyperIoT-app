@@ -1,32 +1,12 @@
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CoreComponent } from './core.component';
 import { HyperiotClientModule } from './hyperiot-client/hyperiot-client.module';
-import { CoreConfig } from './config.service';
-
-
 
 @NgModule({
-  declarations: [
-    CoreComponent,
-  ],
+  declarations: [CoreComponent],
   imports: [
-    HyperiotClientModule,
+    HyperiotClientModule
   ],
-  providers: [
-    {
-      provide: APP_INITIALIZER,
-      multi: true,
-      useFactory: (config: CoreConfig) => {
-        return () => {
-          config.fetchAvailableOperations();
-          return config.configReady$;
-        };
-      },
-      deps: [ CoreConfig ],
-    },
-  ],
-  exports: [
-    CoreComponent,
-  ]
+  exports: [CoreComponent]
 })
 export class CoreModule { }

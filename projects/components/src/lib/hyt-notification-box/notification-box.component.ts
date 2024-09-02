@@ -4,7 +4,7 @@ import {Component, OnInit, Input, ViewChild, ElementRef, Renderer2, AfterViewIni
 
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import { NotificationGlobalChannels, NotificationManagerService, Notification, NotificationSeverity, NotifyPosition } from 'core';
+import { NotificationGlobalChannels, NotificationManagerService, Notification, NotificationSeverity, NotifyPosition } from 'core'
 @Component({
   selector: 'hyt-notification-box',
   templateUrl: './notification-box.component.html',

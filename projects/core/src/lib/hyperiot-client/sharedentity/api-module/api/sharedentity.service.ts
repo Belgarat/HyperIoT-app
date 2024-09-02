@@ -14,7 +14,6 @@
 import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
          HttpResponse, HttpEvent }                           from '@angular/common/http';
-import { HttpContext }                                       from '@angular/common/http';
 import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
@@ -63,10 +62,10 @@ export class SharedentityService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public checkModuleWorking(observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public checkModuleWorking(observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public checkModuleWorking(observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public checkModuleWorking(observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public checkModuleWorking(observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public checkModuleWorking(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public checkModuleWorking(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public checkModuleWorking(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -88,7 +87,6 @@ export class SharedentityService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -101,10 +99,10 @@ export class SharedentityService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteSharedEntity(body: SharedEntity, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public deleteSharedEntity(body: SharedEntity, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public deleteSharedEntity(body: SharedEntity, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public deleteSharedEntity(body: SharedEntity, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public deleteSharedEntity(body: SharedEntity, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteSharedEntity(body: SharedEntity, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteSharedEntity(body: SharedEntity, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteSharedEntity(body: SharedEntity, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling deleteSharedEntity.');
@@ -140,7 +138,6 @@ export class SharedentityService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -152,10 +149,10 @@ export class SharedentityService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findAllSharedEntity(observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public findAllSharedEntity(observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public findAllSharedEntity(observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public findAllSharedEntity(observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public findAllSharedEntity(observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findAllSharedEntity(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findAllSharedEntity(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findAllSharedEntity(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -182,7 +179,6 @@ export class SharedentityService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -196,10 +192,10 @@ export class SharedentityService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findAllSharedEntityPaginated(delta?: number, page?: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public findAllSharedEntityPaginated(delta?: number, page?: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public findAllSharedEntityPaginated(delta?: number, page?: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public findAllSharedEntityPaginated(delta?: number, page?: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public findAllSharedEntityPaginated(delta?: number, page?: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findAllSharedEntityPaginated(delta?: number, page?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findAllSharedEntityPaginated(delta?: number, page?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findAllSharedEntityPaginated(delta?: number, page?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
 
@@ -237,7 +233,6 @@ export class SharedentityService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -251,10 +246,10 @@ export class SharedentityService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findByEntity(entityResourceName?: string, entityId?: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public findByEntity(entityResourceName?: string, entityId?: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public findByEntity(entityResourceName?: string, entityId?: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public findByEntity(entityResourceName?: string, entityId?: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public findByEntity(entityResourceName?: string, entityId?: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findByEntity(entityResourceName?: string, entityId?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findByEntity(entityResourceName?: string, entityId?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findByEntity(entityResourceName?: string, entityId?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
 
@@ -292,7 +287,6 @@ export class SharedentityService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -305,10 +299,10 @@ export class SharedentityService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findByPK(body: SharedEntity, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public findByPK(body: SharedEntity, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public findByPK(body: SharedEntity, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public findByPK(body: SharedEntity, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public findByPK(body: SharedEntity, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findByPK(body: SharedEntity, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findByPK(body: SharedEntity, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findByPK(body: SharedEntity, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling findByPK.');
@@ -343,7 +337,6 @@ export class SharedentityService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -356,10 +349,10 @@ export class SharedentityService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findByUser(userId: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public findByUser(userId: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public findByUser(userId: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public findByUser(userId: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public findByUser(userId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findByUser(userId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findByUser(userId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findByUser(userId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (userId === null || userId === undefined) {
             throw new Error('Required parameter userId was null or undefined when calling findByUser.');
@@ -390,7 +383,6 @@ export class SharedentityService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -404,10 +396,10 @@ export class SharedentityService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUsers(entityResourceName?: string, entityId?: number, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public getUsers(entityResourceName?: string, entityId?: number, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public getUsers(entityResourceName?: string, entityId?: number, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public getUsers(entityResourceName?: string, entityId?: number, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public getUsers(entityResourceName?: string, entityId?: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public getUsers(entityResourceName?: string, entityId?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public getUsers(entityResourceName?: string, entityId?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public getUsers(entityResourceName?: string, entityId?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
 
@@ -445,7 +437,6 @@ export class SharedentityService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
@@ -458,10 +449,10 @@ export class SharedentityService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public saveSharedEntity(body: SharedEntity, observe?: 'body', reportProgress?: boolean, context?: HttpContext): Observable<any>;
-    public saveSharedEntity(body: SharedEntity, observe?: 'response', reportProgress?: boolean, context?: HttpContext): Observable<HttpResponse<any>>;
-    public saveSharedEntity(body: SharedEntity, observe?: 'events', reportProgress?: boolean, context?: HttpContext): Observable<HttpEvent<any>>;
-    public saveSharedEntity(body: SharedEntity, observe: any = 'body', reportProgress: boolean = false, context = new HttpContext()): Observable<any> {
+    public saveSharedEntity(body: SharedEntity, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public saveSharedEntity(body: SharedEntity, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public saveSharedEntity(body: SharedEntity, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public saveSharedEntity(body: SharedEntity, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling saveSharedEntity.');
@@ -498,7 +489,6 @@ export class SharedentityService {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
-                context: context,
                 reportProgress: reportProgress
             }
         );
